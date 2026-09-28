@@ -8,7 +8,7 @@ import type { Lang } from '@/content/messages';
 import { useI18n } from '@/lib/i18n';
 import { ThemeToggle } from './ThemeToggle';
 
-const SECTIONS = ['about', 'skills', 'projects', 'experience', 'contact'] as const;
+const SECTIONS = ['about', 'skills', 'projects', 'experience', 'education', 'contact'] as const;
 
 export function Header() {
   const { lang, setLang, t } = useI18n();

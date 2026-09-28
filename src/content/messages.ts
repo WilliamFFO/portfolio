@@ -6,7 +6,14 @@ const es = {
     description:
       'Desarrollador Full Stack: APIs con Node.js y NestJS, aplicaciones web con Next.js, React y TypeScript, y migración de sistemas empresariales.',
   },
-  nav: { about: 'Sobre mí', skills: 'Tecnologías', projects: 'Proyectos', experience: 'Experiencia', contact: 'Contacto' },
+  nav: {
+    about: 'Sobre mí',
+    skills: 'Tecnologías',
+    projects: 'Proyectos',
+    experience: 'Experiencia',
+    education: 'Formación',
+    contact: 'Contacto',
+  },
   hero: {
     eyebrow: 'Ingeniero Electrónico · Desarrollador Full Stack',
     titleBefore: 'Construyo ',
@@ -18,6 +25,7 @@ const es = {
   },
   about: {
     title: 'Sobre mí',
+    photoAlt: 'Foto de William Fuentes Ossa',
     paragraphs: [
       'Soy ingeniero electrónico y desarrollador Full Stack. Me gusta construir sistemas completos: desde la API y la base de datos hasta la interfaz que usa la gente.',
       'Trabajé en una plataforma SaaS de seguridad y monitoreo con arquitectura de microservicios e integración de dispositivos IoT. Hoy participo en la migración de aplicaciones empresariales antiguas a Java y plataformas web para una entidad del sector salud, donde aprendí a entender sistemas grandes, documentarlos con rigor y entregar por etapas.',
@@ -46,7 +54,7 @@ const es = {
   },
   projects: {
     title: 'Proyectos',
-    subtitle: 'Dos proyectos conectados entre sí: una API en Node.js y el panel web en React que la consume.',
+    subtitle: 'Una API en Node.js con el panel web en React que la consume, y una tienda en línea construida con React y Redux.',
     code: 'Código',
     demo: 'Demo en vivo',
     docs: 'Documentación',
@@ -62,6 +70,12 @@ const es = {
         text: 'API REST con autenticación JWT, validación de datos, filtros y paginación, aislamiento de datos por usuario, límite de peticiones, documentación Swagger, base de datos PostgreSQL en la nube, 19 pruebas automatizadas y Dockerfile.',
         alt: 'Captura de la documentación Swagger de la Task Manager API',
         stack: ['Node.js', 'NestJS 11', 'TypeScript', 'PostgreSQL', 'JWT', 'Swagger', 'Jest', 'Docker'],
+      },
+      nursery: {
+        title: 'Paradise Nursery',
+        text: 'Tienda en línea de plantas de interior: catálogo por categorías, carrito de compras con control de cantidades y cálculo dinámico de totales, y navegación de una sola página con React Router.',
+        alt: 'Captura de la tienda en línea Paradise Nursery',
+        stack: ['React', 'Redux Toolkit', 'React Router', 'Vite'],
       },
     },
   },
@@ -91,6 +105,33 @@ const es = {
       },
     ],
   },
+  education: {
+    title: 'Formación y certificaciones',
+    subtitle: 'Estudios formales y certificaciones obtenidas en línea.',
+    degreesTitle: 'Estudios',
+    certsTitle: 'Certificaciones',
+    present: 'En curso',
+    degrees: [
+      {
+        title: 'Maestría en Arquitectura de Software',
+        org: 'Politécnico Grancolombiano',
+        period: '2025 – 2026',
+      },
+      {
+        title: 'Ingeniería Electrónica',
+        org: 'Universidad Santo Tomás',
+        period: '2019 – 2024',
+      },
+    ],
+    certs: [
+      { title: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate', org: 'Oracle', period: '2025' },
+      { title: 'Introducción al desarrollo de back-end', org: 'Meta', period: '2025' },
+      { title: 'Fundamentos en Metodologías Ágiles (Scrum, Kanban y Lean)', org: 'Colsubsidio Educación Tecnológica', period: '2024' },
+      { title: 'Scrum Foundation Professional Certificate (SFPC)', org: 'Certiprof', period: '2024' },
+      { title: 'Introduction to Scrum Master Profession', org: 'Skillup.co', period: '2024' },
+      { title: 'Web Development', org: 'Sololearn', period: '2024' },
+    ],
+  },
   contact: {
     title: '¿Tienes un proyecto en mente?',
     lead: 'Estoy abierto a proyectos freelance y colaboraciones. Cuéntame qué necesitas.',
@@ -113,7 +154,14 @@ const en: Messages = {
     description:
       'Full Stack developer: APIs with Node.js and NestJS, web apps with Next.js, React and TypeScript, and legacy enterprise system migration.',
   },
-  nav: { about: 'About', skills: 'Skills', projects: 'Projects', experience: 'Experience', contact: 'Contact' },
+  nav: {
+    about: 'About',
+    skills: 'Skills',
+    projects: 'Projects',
+    experience: 'Experience',
+    education: 'Education',
+    contact: 'Contact',
+  },
   hero: {
     eyebrow: 'Electronics Engineer · Full Stack Developer',
     titleBefore: 'I build complete ',
@@ -125,6 +173,7 @@ const en: Messages = {
   },
   about: {
     title: 'About me',
+    photoAlt: 'Photo of William Fuentes Ossa',
     paragraphs: [
       'I am an electronics engineer and Full Stack developer. I like building complete systems: from the API and the database to the interface people actually use.',
       'I worked on a SaaS security and monitoring platform built with microservices and IoT device integration. Today I take part in migrating legacy enterprise applications to Java and web platforms for a healthcare organization, where I learned to understand large systems, document them carefully and deliver in stages.',
@@ -153,7 +202,7 @@ const en: Messages = {
   },
   projects: {
     title: 'Projects',
-    subtitle: 'Two connected projects: a Node.js API and the React dashboard that consumes it.',
+    subtitle: 'A Node.js API with the React dashboard that consumes it, and an online store built with React and Redux.',
     code: 'Code',
     demo: 'Live demo',
     docs: 'Documentation',
@@ -169,6 +218,12 @@ const en: Messages = {
         text: 'REST API with JWT authentication, input validation, filtering and pagination, per-user data isolation, rate limiting, Swagger documentation, a cloud PostgreSQL database, 19 automated tests and a Dockerfile.',
         alt: 'Screenshot of the Task Manager API Swagger documentation',
         stack: ['Node.js', 'NestJS 11', 'TypeScript', 'PostgreSQL', 'JWT', 'Swagger', 'Jest', 'Docker'],
+      },
+      nursery: {
+        title: 'Paradise Nursery',
+        text: 'Online store for indoor plants: catalog by category, a shopping cart with quantity control and dynamic totals, and single-page navigation with React Router.',
+        alt: 'Screenshot of the Paradise Nursery online store',
+        stack: ['React', 'Redux Toolkit', 'React Router', 'Vite'],
       },
     },
   },
@@ -196,6 +251,33 @@ const en: Messages = {
           'Stack: Node.js, NestJS, Next.js, TypeScript, C#, MySQL and MongoDB.',
         ],
       },
+    ],
+  },
+  education: {
+    title: 'Education & certifications',
+    subtitle: 'Formal studies and certifications earned online.',
+    degreesTitle: 'Education',
+    certsTitle: 'Certifications',
+    present: 'In progress',
+    degrees: [
+      {
+        title: "Master's in Software Architecture",
+        org: 'Politécnico Grancolombiano',
+        period: '2025 – 2026',
+      },
+      {
+        title: 'B.Sc. in Electronic Engineering',
+        org: 'Universidad Santo Tomás',
+        period: '2019 – 2024',
+      },
+    ],
+    certs: [
+      { title: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate', org: 'Oracle', period: '2025' },
+      { title: 'Introduction to Back-End Development', org: 'Meta', period: '2025' },
+      { title: 'Agile Methodology Fundamentals (Scrum, Kanban & Lean)', org: 'Colsubsidio Educación Tecnológica', period: '2024' },
+      { title: 'Scrum Foundation Professional Certificate (SFPC)', org: 'Certiprof', period: '2024' },
+      { title: 'Introduction to Scrum Master Profession', org: 'Skillup.co', period: '2024' },
+      { title: 'Web Development', org: 'Sololearn', period: '2024' },
     ],
   },
   contact: {

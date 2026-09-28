@@ -21,10 +21,10 @@ describe('Home page', () => {
   it('renders every section with accessible headings', () => {
     setup();
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Construyo APIs y aplicaciones web');
-    for (const id of ['about', 'skills', 'projects', 'experience', 'contact']) {
+    for (const id of ['about', 'skills', 'projects', 'experience', 'education', 'contact']) {
       expect(document.getElementById(id)).toBeInTheDocument();
     }
-    expect(screen.getAllByRole('heading', { level: 2 })).toHaveLength(5);
+    expect(screen.getAllByRole('heading', { level: 2 })).toHaveLength(6);
   });
 
   it('switches language and keeps the document language in sync', async () => {
@@ -39,12 +39,20 @@ describe('Home page', () => {
     expect(await screen.findByRole('heading', { level: 1 })).toHaveTextContent('Construyo APIs y aplicaciones web');
   });
 
-  it('lists both projects with their images described', () => {
+  it('lists every project with its image described', () => {
     setup();
     const projects = document.getElementById('projects')!;
     expect(within(projects).getByRole('heading', { name: 'Tasks Dashboard' })).toBeInTheDocument();
     expect(within(projects).getByRole('heading', { name: 'Task Manager API' })).toBeInTheDocument();
+    expect(within(projects).getByRole('heading', { name: 'Paradise Nursery' })).toBeInTheDocument();
     for (const img of within(projects).getAllByRole('img')) expect(img).toHaveAccessibleName();
+  });
+
+  it('shows education and certifications', () => {
+    setup();
+    const education = document.getElementById('education')!;
+    expect(within(education).getByText('Universidad Santo Tomás')).toBeInTheDocument();
+    expect(within(education).getByText('Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate')).toBeInTheDocument();
   });
 
   it('shows LinkedIn and Fiverr but no GitHub link when it is not configured', () => {

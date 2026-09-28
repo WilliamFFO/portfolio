@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Image, { type StaticImageData } from 'next/image';
 import dashboardShot from '../../public/images/dashboard.png';
 import apiShot from '../../public/images/api-docs.png';
+import nurseryShot from '../../public/images/nursery.png';
 import { repoUrl, site } from '@/config/site';
 import { useI18n } from '@/lib/i18n';
 import { Section } from './Section';
@@ -65,14 +66,11 @@ function Project({ title, text, alt, stack, image, imageHref, reverse, links, op
   );
 }
 
-// Static image URLs do not include the basePath used on GitHub Pages project sites.
-const withBase = (src: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${src}`;
-
 export function Projects() {
   const { t } = useI18n();
   const p = t.projects;
 
-  const linksFor = (kind: 'dashboard' | 'api') => {
+  const linksFor = (kind: 'dashboard' | 'api' | 'nursery') => {
     const links: ProjectProps['links'] = [];
     const repo = repoUrl(kind);
     if (repo) links.push({ label: p.code, href: repo, icon: <CodeIcon /> });
@@ -93,16 +91,23 @@ export function Projects() {
         <Project
           {...p.items.dashboard}
           image={dashboardShot}
-          imageHref={site.demos.dashboard || withBase(dashboardShot.src)}
+          imageHref={site.demos.dashboard || dashboardShot.src}
           links={linksFor('dashboard')}
           openLabel={t.ui.openImage}
         />
         <Project
           {...p.items.api}
           image={apiShot}
-          imageHref={site.demos.api || withBase(apiShot.src)}
+          imageHref={site.demos.api || apiShot.src}
           reverse
           links={linksFor('api')}
+          openLabel={t.ui.openImage}
+        />
+        <Project
+          {...p.items.nursery}
+          image={nurseryShot}
+          imageHref={site.demos.nursery || nurseryShot.src}
+          links={linksFor('nursery')}
           openLabel={t.ui.openImage}
         />
       </div>

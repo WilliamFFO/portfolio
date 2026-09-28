@@ -1,5 +1,6 @@
 import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
+import { Education } from '@/components/Education';
 import { Experience } from '@/components/Experience';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
@@ -19,6 +20,7 @@ export default function Home() {
         <Skills />
         <Projects />
         <Experience />
+        <Education />
         <Contact />
       </main>
       <footer className="border-t border-[var(--mui-palette-divider)] py-8 text-center text-sm text-[var(--mui-palette-text-secondary)]">

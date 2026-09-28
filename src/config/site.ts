@@ -15,10 +15,13 @@ export const site = {
   repos: {
     dashboard: 'tasks-dashboard',
     api: 'task-manager-api',
+    nursery: 'paradise-nursery',
   },
   demos: {
     dashboard: env(process.env.NEXT_PUBLIC_DASHBOARD_URL),
     api: env(process.env.NEXT_PUBLIC_API_DOCS_URL),
+    // GitHub Pages project site: same fixed URL shape as this portfolio, so no env var is needed.
+    nursery: githubUser ? `https://${githubUser}.github.io/paradise-nursery/` : '',
   },
 } as const;
 
