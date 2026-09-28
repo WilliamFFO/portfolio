@@ -2,12 +2,14 @@
 const env = (value: string | undefined) => (value && value.trim() ? value.trim() : '');
 
 const githubUser = env(process.env.NEXT_PUBLIC_GITHUB_USER);
+const basePath = env(process.env.NEXT_PUBLIC_BASE_PATH).replace(/\/$/, '');
 
 export const site = {
   name: 'William Fernando Fuentes Ossa',
   shortName: 'William Fuentes',
   location: 'Bogotá, Colombia',
-  url: githubUser ? `https://${githubUser.toLowerCase()}.github.io/portfolio/` : 'https://williamffo.github.io/portfolio/',
+  /** Public address of this site, always ending in "/". */
+  url: `https://${(githubUser || 'WilliamFFO').toLowerCase()}.github.io${basePath}/`,
   githubUser,
   github: githubUser ? `https://github.com/${githubUser}` : '',
   email: env(process.env.NEXT_PUBLIC_EMAIL),

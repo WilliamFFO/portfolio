@@ -20,7 +20,8 @@ describe('Home page', () => {
 
   it('renders every section with accessible headings', () => {
     setup();
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Construyo APIs y aplicaciones web');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('William Fuentes');
+    expect(screen.getByText('Desarrollador Full Stack')).toBeInTheDocument();
     for (const id of ['about', 'skills', 'projects', 'experience', 'education', 'contact']) {
       expect(document.getElementById(id)).toBeInTheDocument();
     }
@@ -31,12 +32,13 @@ describe('Home page', () => {
     const user = userEvent.setup();
     setup();
     await user.click(screen.getByRole('button', { name: 'English' }));
-    expect(await screen.findByRole('heading', { level: 1 })).toHaveTextContent('I build complete APIs and web applications');
+    expect(await screen.findByText('Full Stack Developer')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Featured projects' })).toBeInTheDocument();
     expect(document.documentElement.lang).toBe('en');
     expect(localStorage.getItem('portfolio.lang')).toBe('en');
 
     await user.click(screen.getByRole('button', { name: 'Español' }));
-    expect(await screen.findByRole('heading', { level: 1 })).toHaveTextContent('Construyo APIs y aplicaciones web');
+    expect(await screen.findByText('Desarrollador Full Stack')).toBeInTheDocument();
   });
 
   it('lists every project with its image described', () => {
@@ -46,6 +48,12 @@ describe('Home page', () => {
     expect(within(projects).getByRole('heading', { name: 'Task Manager API' })).toBeInTheDocument();
     expect(within(projects).getByRole('heading', { name: 'Paradise Nursery' })).toBeInTheDocument();
     for (const img of within(projects).getAllByRole('img')) expect(img).toHaveAccessibleName();
+  });
+
+  it('marks Paradise Nursery as a master\'s degree project', () => {
+    setup();
+    const projects = document.getElementById('projects')!;
+    expect(within(projects).getByText('Proyecto de maestría')).toBeInTheDocument();
   });
 
   it('shows education and certifications', () => {

@@ -3,16 +3,19 @@
 import CodeIcon from '@mui/icons-material/Code';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
-import Typography from '@mui/material/Typography';
 import Image, { type StaticImageData } from 'next/image';
 import dashboardShot from '../../public/images/dashboard.png';
 import apiShot from '../../public/images/api-docs.png';
 import nurseryShot from '../../public/images/nursery.png';
 import { repoUrl, site } from '@/config/site';
 import { useI18n } from '@/lib/i18n';
+import { Reveal } from './Reveal';
 import { Section } from './Section';
+
+type Kind = 'dashboard' | 'api' | 'nursery';
 
 interface ProjectProps {
   title: string;
@@ -21,41 +24,60 @@ interface ProjectProps {
   stack: readonly string[];
   image: StaticImageData;
   imageHref: string;
-  reverse?: boolean;
   links: { label: string; href: string; icon: React.ReactNode }[];
   openLabel: string;
+  badge?: { label: string; icon: React.ReactNode };
+  featured?: boolean;
 }
 
-function Project({ title, text, alt, stack, image, imageHref, reverse, links, openLabel }: ProjectProps) {
+function Project({ title, text, alt, stack, image, imageHref, links, openLabel, badge, featured }: ProjectProps) {
   return (
-    <article className="grid items-center gap-6 md:grid-cols-2 md:gap-10">
+    <article className={`card card-hover group grid h-full overflow-hidden ${featured ? 'lg:grid-cols-[1.35fr_1fr]' : 'grid-rows-[auto_1fr]'}`}>
       <a
         href={imageHref}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${openLabel}: ${title}`}
-        className={`block overflow-hidden rounded-2xl border border-[var(--mui-palette-divider)] shadow-lg transition-transform hover:-translate-y-1 ${reverse ? 'md:order-2' : ''}`}
+        className="relative block overflow-hidden border-b border-line bg-bg lg:border-b-0"
       >
-        <Image src={image} alt={alt} placeholder="empty" sizes="(min-width: 768px) 50vw, 100vw" className="h-auto w-full" />
+        <Image
+          src={image}
+          alt={alt}
+          placeholder="empty"
+          sizes={featured ? '(min-width: 1024px) 60vw, 100vw' : '(min-width: 768px) 50vw, 100vw'}
+          className={`w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04] ${featured ? 'h-full min-h-64 lg:max-h-[440px]' : 'aspect-[16/10]'}`}
+        />
+        <span aria-hidden className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       </a>
-      <div>
-        <Typography variant="h5" component="h3" fontWeight={700}>
-          {title}
-        </Typography>
-        <Typography color="text.secondary" className="!mt-2">
-          {text}
-        </Typography>
-        <ul className="mt-4 flex flex-wrap gap-1.5">
+
+      <div className={`flex flex-col p-7 ${featured ? 'lg:justify-center lg:p-10' : ''}`}>
+        {badge && (
+          <span className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/12 px-3 py-1 text-xs font-semibold text-primary">
+            {badge.icon}
+            {badge.label}
+          </span>
+        )}
+        <h3 className={`font-display font-bold text-fg ${featured ? 'text-3xl' : 'text-2xl'}`}>{title}</h3>
+        <p className="mt-3 leading-relaxed text-muted">{text}</p>
+        <ul className="mt-5 flex flex-wrap gap-1.5">
           {stack.map((s) => (
-            <li key={s}>
-              <Chip label={s} size="small" variant="outlined" />
+            <li key={s} className="rounded-lg border border-line px-2.5 py-1 text-[12.5px] font-medium text-fg">
+              {s}
             </li>
           ))}
         </ul>
         {links.length > 0 && (
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            {links.map((l) => (
-              <Button key={l.label} variant="outlined" size="small" href={l.href} target="_blank" rel="noopener noreferrer" startIcon={l.icon}>
+          <div className="mt-auto flex flex-wrap gap-2.5 pt-7">
+            {links.map((l, i) => (
+              <Button
+                key={l.label}
+                variant={i === links.length - 1 && links.length > 1 ? 'contained' : 'outlined'}
+                size="small"
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                startIcon={l.icon}
+              >
                 {l.label}
               </Button>
             ))}
@@ -70,7 +92,7 @@ export function Projects() {
   const { t } = useI18n();
   const p = t.projects;
 
-  const linksFor = (kind: 'dashboard' | 'api' | 'nursery') => {
+  const linksFor = (kind: Kind) => {
     const links: ProjectProps['links'] = [];
     const repo = repoUrl(kind);
     if (repo) links.push({ label: p.code, href: repo, icon: <CodeIcon /> });
@@ -86,30 +108,34 @@ export function Projects() {
   };
 
   return (
-    <Section id="projects" title={p.title} subtitle={p.subtitle}>
-      <div className="space-y-16">
-        <Project
-          {...p.items.dashboard}
-          image={dashboardShot}
-          imageHref={site.demos.dashboard || dashboardShot.src}
-          links={linksFor('dashboard')}
-          openLabel={t.ui.openImage}
-        />
-        <Project
-          {...p.items.api}
-          image={apiShot}
-          imageHref={site.demos.api || apiShot.src}
-          reverse
-          links={linksFor('api')}
-          openLabel={t.ui.openImage}
-        />
-        <Project
-          {...p.items.nursery}
-          image={nurseryShot}
-          imageHref={site.demos.nursery || nurseryShot.src}
-          links={linksFor('nursery')}
-          openLabel={t.ui.openImage}
-        />
+    <Section id="projects" eyebrow={p.eyebrow} title={p.title} subtitle={p.subtitle} center>
+      <div className="space-y-6">
+        <Reveal>
+          <Project
+            {...p.items.dashboard}
+            image={dashboardShot}
+            imageHref={site.demos.dashboard || dashboardShot.src}
+            links={linksFor('dashboard')}
+            openLabel={t.ui.openImage}
+            badge={{ label: p.featured, icon: <StarRoundedIcon sx={{ fontSize: 16 }} /> }}
+            featured
+          />
+        </Reveal>
+        <div className="grid gap-6 md:grid-cols-2">
+          <Reveal>
+            <Project
+              {...p.items.nursery}
+              image={nurseryShot}
+              imageHref={site.demos.nursery || nurseryShot.src}
+              links={linksFor('nursery')}
+              openLabel={t.ui.openImage}
+              badge={{ label: p.masters, icon: <SchoolOutlinedIcon sx={{ fontSize: 16 }} /> }}
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <Project {...p.items.api} image={apiShot} imageHref={site.demos.api || apiShot.src} links={linksFor('api')} openLabel={t.ui.openImage} />
+          </Reveal>
+        </div>
       </div>
     </Section>
   );

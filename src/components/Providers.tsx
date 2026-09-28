@@ -7,7 +7,7 @@ import { theme } from '@/lib/theme';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider theme={theme} defaultMode="system" disableTransitionOnChange>
+    <ThemeProvider theme={theme} defaultMode="dark" disableTransitionOnChange>
       <CssBaseline enableColorScheme />
       <I18nProvider>{children}</I18nProvider>
     </ThemeProvider>
