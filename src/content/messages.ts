@@ -2,9 +2,9 @@ export type Lang = 'es' | 'en';
 
 const es = {
   meta: {
-    title: 'William Fuentes Ossa | Desarrollador Full Stack',
+    title: 'Portafolio de William Fuentes Ossa | Desarrollador Full Stack',
     description:
-      'Desarrollador Full Stack: APIs con Node.js y NestJS, aplicaciones web con Next.js, React y TypeScript, y migración de sistemas empresariales.',
+      'Portafolio de William Fuentes Ossa, Ingeniero Electrónico y Desarrollador Full Stack: APIs con Node.js y NestJS, aplicaciones web con Next.js, React y TypeScript, y migración de sistemas empresariales.',
   },
   nav: {
     about: 'Sobre mí',
@@ -73,7 +73,7 @@ const es = {
       },
       nursery: {
         title: 'Paradise Nursery',
-        text: 'Tienda en línea de plantas de interior: catálogo por categorías, carrito de compras con control de cantidades y cálculo dinámico de totales, y navegación de una sola página con React Router.',
+        text: 'Tienda en línea de plantas de interior desarrollada como proyecto de la Maestría en Arquitectura de Software: catálogo por categorías, carrito de compras con control de cantidades y cálculo dinámico de totales, y navegación de una sola página con React Router.',
         alt: 'Captura de la tienda en línea Paradise Nursery',
         stack: ['React', 'Redux Toolkit', 'React Router', 'Vite'],
       },
@@ -143,6 +143,9 @@ const es = {
     theme: { light: 'Tema claro', dark: 'Tema oscuro', system: 'Tema del sistema' },
     themeHint: 'clic para cambiar',
     openImage: 'Abrir imagen en una pestaña nueva',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Cerrar menú',
+    backToTop: 'Volver arriba',
   },
 };
 
@@ -150,9 +153,9 @@ export type Messages = typeof es;
 
 const en: Messages = {
   meta: {
-    title: 'William Fuentes Ossa | Full Stack Developer',
+    title: 'William Fuentes Ossa Portfolio | Full Stack Developer',
     description:
-      'Full Stack developer: APIs with Node.js and NestJS, web apps with Next.js, React and TypeScript, and legacy enterprise system migration.',
+      'Portfolio of William Fuentes Ossa, Electronics Engineer and Full Stack developer: APIs with Node.js and NestJS, web apps with Next.js, React and TypeScript, and legacy enterprise system migration.',
   },
   nav: {
     about: 'About',
@@ -221,7 +224,7 @@ const en: Messages = {
       },
       nursery: {
         title: 'Paradise Nursery',
-        text: 'Online store for indoor plants: catalog by category, a shopping cart with quantity control and dynamic totals, and single-page navigation with React Router.',
+        text: "Online store for indoor plants, built as a project for a Master's in Software Architecture: catalog by category, a shopping cart with quantity control and dynamic totals, and single-page navigation with React Router.",
         alt: 'Screenshot of the Paradise Nursery online store',
         stack: ['React', 'Redux Toolkit', 'React Router', 'Vite'],
       },
@@ -291,6 +294,9 @@ const en: Messages = {
     theme: { light: 'Light theme', dark: 'Dark theme', system: 'System theme' },
     themeHint: 'click to change',
     openImage: 'Open image in a new tab',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    backToTop: 'Back to top',
   },
 };
 

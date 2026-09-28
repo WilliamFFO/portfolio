@@ -1,4 +1,5 @@
 import { About } from '@/components/About';
+import { BackToTop } from '@/components/BackToTop';
 import { Contact } from '@/components/Contact';
 import { Education } from '@/components/Education';
 import { Experience } from '@/components/Experience';
@@ -26,6 +27,7 @@ export default function Home() {
       <footer className="border-t border-[var(--mui-palette-divider)] py-8 text-center text-sm text-[var(--mui-palette-text-secondary)]">
         © {new Date().getFullYear()} {site.name} · {site.location}
       </footer>
+      <BackToTop />
     </>
   );
 }

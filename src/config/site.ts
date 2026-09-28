@@ -7,6 +7,7 @@ export const site = {
   name: 'William Fernando Fuentes Ossa',
   shortName: 'William Fuentes',
   location: 'Bogotá, Colombia',
+  url: githubUser ? `https://${githubUser.toLowerCase()}.github.io/portfolio/` : 'https://williamffo.github.io/portfolio/',
   githubUser,
   github: githubUser ? `https://github.com/${githubUser}` : '',
   email: env(process.env.NEXT_PUBLIC_EMAIL),
